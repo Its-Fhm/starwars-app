@@ -1,0 +1,23 @@
+<div class="text-center">
+  <mat-form-field appearance="fill" class="background-color">
+    <mat-label>Select an option</mat-label>
+    <mat-select [(value)]="selected">
+      <mat-option *ngFor="let film of films" [value]="film.episode_id" (click)="selectMovie(film)">
+        {{film.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+  <app-movie-detail [movie]="selectedMovie" [crawlerFlag]="crawlerFlag" [characters]="characters" [totalCharacters]="totalCharacters" [totalHeights]="totalHeights"></app-movie-detail>
+  <div *ngIf="selectedMovie">
+    <div id="board">  
+      <div id="content">
+        <p id="title">Episode {{selectedMovie.episode_id}}</p>
+        <p id="subtitle">{{selectedMovie.title}}</p>
+        <br>
+        <p class="crawl-text">{{selectedMovie.opening_crawl}}</p>       
+      </div>  
+    </div>
+  </div>
